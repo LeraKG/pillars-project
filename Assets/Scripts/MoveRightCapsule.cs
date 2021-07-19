@@ -7,17 +7,17 @@ public class MoveRightCapsule : MoveRight
 
     private Rigidbody rB;
 
-    private float m_moveSpeedCaps = 3;
-    public float MoveSpeed
-    {
-        get { return m_moveSpeedCaps; }
-        set { MoveSpeed = value; }
-    }
+    private float moveSpeedCaps = 3;
+
+
+
+    //private values encaps
 
     // Start is called before the first frame update
     void Start()
     {
        rB = gameObject.GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
@@ -26,13 +26,15 @@ public class MoveRightCapsule : MoveRight
         MoveR();
         LookAtTarget();
     }
+
+    // poly override below
     public override void MoveR()
     {
-        rB.AddRelativeForce(Vector3.right * m_moveSpeedCaps);
+        rB.AddRelativeForce(Vector3.right * moveSpeedCaps);
     }
     public override void LookAtTarget()
     {
-        base.LookAtTarget();
+        transform.LookAt(new Vector3(0, 0.34f, 0));
         transform.Rotate(90, 0, 0);
     }
 

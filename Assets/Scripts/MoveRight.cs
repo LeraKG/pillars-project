@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class MoveRight : MonoBehaviour
 {
-
-    public Transform target;
+    
+    private Transform m_Target;
+    public Transform Target
+    {
+        get { return m_Target; }
+        set { m_Target = transform; }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_Target = GameObject.Find("LookAtThis").transform;
     }
 
     // Update is called once per frame
@@ -26,6 +31,6 @@ public class MoveRight : MonoBehaviour
     }
     public virtual void LookAtTarget()
     {
-        transform.LookAt(target);
+        transform.LookAt(m_Target);
     }
 }
